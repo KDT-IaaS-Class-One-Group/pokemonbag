@@ -1,23 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!DOCTYPE html>
   <title>서브 페이지</title>
 </head>
+
 <body>
   <h1>서브 페이지</h1>
-  <div id="receivedData"></div>
+  <div class="box" data-index="1">박스 1</div>
+  <div class="box" data-index="2">박스 2</div>
+  <div class="box" data-index="3">박스 3</div>
+  <div class="box" data-index="4">박스 4</div>
+  <div class="box" data-index="5">박스 5</div>
+  <div class="box" data-index="6">박스 6</div>
+  <div class="box" data-index="7">박스 7</div>
+  <div class="box" data-index="8">박스 8</div>
+  <div class="box" data-index="9">박스 9</div>
+  <!-- 여덟 개의 다른 박스 추가 -->
 
   <script>
     // 서버에서 전송된 데이터를 표시
     fetch('/getData')
       .then((response) => response.json())
       .then((data) => {
-        const receivedData = document.getElementById('receivedData');
-        receivedData.textContent = `메인 페이지에서 전송된 데이터: ${data.textContent}`;
+        const { textContent, index } = data;
+        const box = document.querySelector(`.box[data-index="${index}"]`);
+        box.textContent = textContent;
       });
   </script>
 </body>
+
 </html>

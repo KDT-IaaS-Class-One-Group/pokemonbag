@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const fs = require('fs');
 
 const app = express();
 const port = 3000;
@@ -12,19 +11,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 데이터를 저장할 JSON 파일 경로
 const dataFilePath = path.join(__dirname, 'data.json');
 
-// 메인 페이지에서 데이터를 받아서 파일에 저장
+// 클라이언트에서 데이터를 받아서 JSON 파일에 저장
 app.post('/sendData', (req, res) => {
-  const { textContent } = req.body;
+  const { textContent, index } = req.body;
 
   // 데이터를 JSON 파일에 저장
-  fs.writeFileSync(dataFilePath, JSON.stringify({ textContent }));
+  const data = JSON.parse(fs.readFileSync(dataFilePath, 'utf-8'));
+  data[index] = textContent;
+  fs.writeFileSync(dataFilePath, JSON.stringify(data));
 
   res.status(200).send('데이터가 저장되었습니다.');
 });
 
-// 서브페이지로 데이터를 전송
+// 서버에서 클라이언트로 데이터 전송
 app.get('/getData', (req, res) => {
-  // JSON 파일에서 데이터 읽기
   const data = JSON.parse(fs.readFileSync(dataFilePath, 'utf-8'));
 
   res.json(data);

@@ -1,34 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!DOCTYPE html>
   <title>메인 페이지</title>
 </head>
 <body>
   <h1>메인 페이지</h1>
-  <button id="dataButton">데이터 전송</button>
+  <div class="box" data-index="1">박스 1</div>
+  <div class="box" data-index="2">박스 2</div>
+  <div class="box" data-index="3">박스 3</div>
+  <div class="box" data-index="4">박스 4</div>
+  <div class="box" data-index="5">박스 5</div>
+  <div class="box" data-index="6">박스 6</div>
+  <div class="box" data-index="7">박스 7</div>
+  <div class="box" data-index="8">박스 8</div>
+  <div class="box" data-index="9">박스 9</div>
+  <!-- 여덟 개의 다른 박스 추가 -->
 
   <script>
-    const dataButton = document.getElementById('dataButton');
-    dataButton.addEventListener('click', async () => {
-      const textContent = dataButton.textContent;
+    const boxes = document.querySelectorAll('.box');
 
-      // 서버로 데이터를 전송
-      const response = await fetch('/sendData', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ textContent }),
+    boxes.forEach((box, index) => {
+      box.addEventListener('click', async () => {
+        const textContent = box.textContent;
+
+        // 클릭한 박스의 내용을 서버로 전송
+        await fetch('/sendData', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ textContent, index }),
+        });
       });
-
-      if (response.ok) {
-        console.log('데이터가 서버로 전송되었습니다.');
-      } else {
-        console.error('데이터 전송 중 오류 발생.');
-      }
     });
   </script>
 </body>
