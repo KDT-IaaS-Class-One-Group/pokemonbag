@@ -51,6 +51,8 @@ sendButton.addEventListener('click', (event) => {
   // 데이터를 JSON 문자열로 변환
 //   console.log(dataToSend())
   const jsonData = JSON.stringify(event.target.textContent);
+  console.log(jsonData)
+
 
   // AJAX 또는 Fetch API를 사용하여 데이터를 백엔드 서버로 전송
   fetch('/data', {
@@ -59,7 +61,15 @@ sendButton.addEventListener('click', (event) => {
       'Content-Type': 'application/json'
     },
     body: jsonData
+  })
+  .then(response => response.json())
+  .then(responseData => {
+    console.log('서버로부터 응답 받음:', responseData);
+  })
+  .catch(error => {
+    console.error('에러 발생:', error);
   });
+
 });
     </script>
 
