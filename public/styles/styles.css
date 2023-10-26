@@ -38,3 +38,27 @@ body {
 #submit:hover {
   background-color: #2980b9;
 }
+
+.pokeBox.clicked {
+  background-color: #e74c3c; /* 클릭되었을 때의 배경색 변경 */
+  position: relative;
+}
+
+.pokeBox.clicked::after, .pokeBox.clicked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 2px;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+}
+
+.pokeBox.clicked::after {
+  transform: translate(-50%, -50%) rotate(45deg); /* 대각선 X의 위쪽 바 */
+}
+
+.pokeBox.clicked::before {
+  transform: translate(-50%, -50%) rotate(-45deg); /* 대각선 X의 아래쪽 바 */
+}
