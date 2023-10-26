@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,16 +15,17 @@
   <div class="box" data-index="7">박스 7</div>
   <div class="box" data-index="8">박스 8</div>
   <div class="box" data-index="9">박스 9</div>
-  <!-- 여덟 개의 다른 박스 추가 -->
+  <!-- 나머지 박스 추가 -->
 
   <script>
     const boxes = document.querySelectorAll('.box');
 
-    boxes.forEach((box, index) => {
+    boxes.forEach((box) => {
       box.addEventListener('click', async () => {
         const textContent = box.textContent;
+        const index = box.getAttribute('data-index');
 
-        // 클릭한 박스의 내용을 서버로 전송
+        // 클릭한 박스의 내용과 인덱스를 서버로 전송
         await fetch('/sendData', {
           method: 'POST',
           headers: {
