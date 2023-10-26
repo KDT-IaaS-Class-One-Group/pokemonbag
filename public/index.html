@@ -26,6 +26,41 @@
 
     <!-- 나중에 수정할 부분 -->
     <script src="app.js"></script>
-    <script src="./jsondata/dataToJson.js"></script>
+    <script>
+        // 데이터 객체 생성
+
+const pokemon = document.getElementsByClassName("pokeBox")
+console.log(pokemon)
+
+// let pokemonName = []
+// for(i=0; i<pokemon.length; i++){
+//     pokemonName[i] = pokemon[i].textContent
+// }
+// console.log(pokemonName)
+
+// function dataToSend(){
+//   pokemonName.forEach(element => {
+//    return element.textContent 
+//   });
+// }
+
+// 버튼 클릭 이벤트 리스너
+const sendButton = document.getElementById('container');
+sendButton.addEventListener('click', (event) => {
+
+  // 데이터를 JSON 문자열로 변환
+//   console.log(dataToSend())
+  const jsonData = JSON.stringify(event.target.textContent);
+
+  // AJAX 또는 Fetch API를 사용하여 데이터를 백엔드 서버로 전송
+  fetch('/data', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: jsonData
+  });
+});
+    </script>
 
 </body>
