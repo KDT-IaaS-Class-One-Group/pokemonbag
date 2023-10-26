@@ -25,6 +25,12 @@
     <input type="submit" name="submit" action="/sub.html" id="submit" value="장바구니"></input>
 
     <!-- 나중에 수정할 부분 -->
-    <script src="app.js"></script>
+    <script type="module">
+      import { dataToSend, sendButton, btnEvent } from "./jsondata/dataToJson.js"
+      // import {} from "./jsondata/JsontoData.js"
+      console.log(dataToSend);
+      console.log(sendButton);
+      console.log(btnEvent);
+    </script>
 
 </body>

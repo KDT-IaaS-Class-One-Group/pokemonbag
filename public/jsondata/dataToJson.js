@@ -5,7 +5,9 @@ const dataToSend = {
 
 // 버튼 클릭 이벤트 리스너
 const sendButton = document.getElementById('container');
-sendButton.addEventListener('click', () => {
+
+const btnEvent = sendButton.addEventListener('click', () => {
+  console.log('btnEvent running');
   // 데이터를 JSON 문자열로 변환
   const jsonData = JSON.stringify(dataToSend);
 
@@ -18,3 +20,5 @@ sendButton.addEventListener('click', () => {
     body: jsonData
   });
 });
+
+export { dataToSend, sendButton, btnEvent }
