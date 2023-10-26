@@ -1,7 +1,12 @@
 // 데이터 객체 생성
-const dataToSend = {
-  message: '안녕하세요, 웹 페이지 2!'
-};
+const pokemon = document.getElementsByClassName("pokeBox")
+
+function dataToSend(){
+  pokemon.forEach(element => {
+   return element.textContent 
+  });
+}
+dataToSend()
 
 // 버튼 클릭 이벤트 리스너
 const sendButton = document.getElementById('container');
