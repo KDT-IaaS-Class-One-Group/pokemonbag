@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>서브 페이지</title>
+</head>
+<body>
+  <h1>서브 페이지</h1>
+  <div id="receivedData"></div>
+
+  <script>
+    // 서버에서 전송된 데이터를 표시
+    fetch('/getData')
+      .then((response) => response.json())
+      .then((data) => {
+        const receivedData = document.getElementById('receivedData');
+        receivedData.textContent = `메인 페이지에서 전송된 데이터: ${data.textContent}`;
+      });
+  </script>
+</body>
+</html>

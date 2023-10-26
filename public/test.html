@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+  <title>메인 페이지</title>
+</head>
+<body>
+  <h1>메인 페이지</h1>
+  <button id="dataButton">데이터 전송</button>
+
+  <script>
+    const dataButton = document.getElementById('dataButton');
+    dataButton.addEventListener('click', async () => {
+      const textContent = dataButton.textContent;
+
+      // 서버로 데이터를 전송
+      const response = await fetch('/sendData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ textContent }),
+      });
+
+      if (response.ok) {
+        console.log('데이터가 서버로 전송되었습니다.');
+      } else {
+        console.error('데이터 전송 중 오류 발생.');
+      }
+    });
+  </script>
+</body>
+</html>
