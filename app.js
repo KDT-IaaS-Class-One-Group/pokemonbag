@@ -7,8 +7,9 @@ const port = 5001;
 // 정적 파일 제공을 위한 미들웨어 설정
 app.use(express.static('public'));
 
-// GET 요청으로 "index.html" 제공
 app.get('/', (req, res) => {
+  const data = {};
+  fs.writeFileSync('public/data.json', JSON.stringify(data));
   res.sendFile(__dirname + '/public/index.html');
 });
 
