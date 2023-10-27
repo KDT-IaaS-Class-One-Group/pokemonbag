@@ -30,22 +30,6 @@ export const addEvent = () => {
             .catch(error => {
               console.error('에러 발생:', error);
             });
-          // 서버에서 savedData 변수를 지정해주고 
-          // 장바구니 페이지에서 'get-data' 엔드포이트에
-          // savedData변수를 응답해주게하여 장바구니페이지에서
-          // 변수를 가져올 수 있게한다.
-
-          // let savedData = null;
-
-          // app.post('/send-data', (req, res) => {
-          //   savedData = req.body.data;
-          //  json데이터 파일로 saveddata를 push로 해서 넣기
-          //   res.json({ message: '데이터가 서버로 전송되었습니다.' });
-          // });
-
-          // app.get('/get-data', (req, res) => {
-          //   res.json({ data: savedData });
-          // });
         }
 
       });
