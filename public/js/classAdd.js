@@ -39,6 +39,7 @@ export const addEvent = () => {
 
           // app.post('/send-data', (req, res) => {
           //   savedData = req.body.data;
+          //  json데이터 파일로 saveddata를 push로 해서 넣기
           //   res.json({ message: '데이터가 서버로 전송되었습니다.' });
           // });
 
