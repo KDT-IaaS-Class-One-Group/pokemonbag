@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const path = require('path');
+const fs = require('fs');
 const port = 5001;
 
 // 정적 파일 제공을 위한 미들웨어 설정

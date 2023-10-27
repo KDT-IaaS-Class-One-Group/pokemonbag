@@ -9,7 +9,7 @@ export const loadData = ()=>{
         const response = await fetch('/data');
         const data = await response.json();
         
-        const pokeBoxes = document.querySelectorAll('pokeBox');
+        const pokeBoxes = document.querySelectorAll('.pokeBox');
   
         data.forEach((item, index) => {
             if(pokeBoxes[index]) {
