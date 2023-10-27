@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 const port = 5001;
+const fs = require('fs');
 
 // 정적 파일 제공을 위한 미들웨어 설정
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  const data = {};
-  fs.writeFileSync('public/data.json', JSON.stringify(data));
+  const data = [];
+  fs.writeFile('public/data.json');
   res.sendFile(__dirname + '/public/index.html');
 });
 
