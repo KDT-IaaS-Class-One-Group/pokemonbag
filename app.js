@@ -28,10 +28,8 @@ app.post('/send-data', (req, res) => {
   //  json데이터 파일로 saveddata를 push로 해서 넣기
   fs.writeFile('data/data.json', JSON.stringify(savedData), 'utf-8', (err) => {
     if (err) {
-      console.error('데이터 저장 중 오류 발생:', err);
       res.status(500).json({ message: '데이터 저장 중 오류 발생' });
     } else {
-      console.log('데이터가 성공적으로 저장되었습니다.');
       res.json({ message: '데이터가 서버로 전송되었습니다.' });
     }
   });
@@ -42,7 +40,6 @@ app.get('/get-data', (req, res) => {
   // data.json 파일에서 데이터를 읽어옵니다.
   fs.readFile('data/data.json', 'utf-8', (err, data) => {
     if (err) {
-      console.error('데이터 읽기 중 오류 발생:', err);
       res.status(500).json({ message: '데이터 읽기 중 오류 발생' });
     } else {
       const parsedData = JSON.parse(data);
