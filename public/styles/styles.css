@@ -33,6 +33,7 @@ body {
   color: #ffffff;
   cursor: pointer;
   transition: background-color 0.3s;
+  text-decoration-line: none;
 }
 
 #submit:hover {
