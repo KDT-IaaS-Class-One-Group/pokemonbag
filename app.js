@@ -30,6 +30,39 @@ app.get('/data', (req, res) => {
 });
 
 
+// body-parser 미들웨어 설정
+app.use(express.json());
+app.post('/save-text', (req, res) => {
+    const text = req.body.text;
+    
+    // 파일 경로 설정
+    const filePath = path.join(__dirname, './public/data/data.json');
+
+    // 파일의 현재 내용 읽기
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ error: 'Failed to read the file.' });
+        }
+
+        let texts = [];
+        if (data) {
+            texts = JSON.parse(data);
+        }
+
+        // 새로운 text 추가
+        texts.push(text);
+
+        // 파일에 업데이트 된 내용 저장
+        fs.writeFile(filePath, JSON.stringify(texts, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ error: 'Failed to write to the file.' });
+            }
+
+            res.status(200).json({ message: 'Text saved successfully!' });
+        });
+    });
+});
+
 
 // 서버 시작
 app.listen(port, () => {
